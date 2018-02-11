@@ -29,6 +29,11 @@ Resources for reference:
 CycleGan: http://github.com/junyanz/CycleGAN
 
 Pix2Pix: http://github.com/phillipi/pix2pix
+
+Special thanks to our TA Olivier and his finetune tutorial:
+
+Finetune: http://gist.github.com/omoindrot/dedc857cdc0e680dfb1be99762990c9c/
+
 ### References:
 
 1. A. Dantcheva, C. Chen, A. Ross, "Can Facial Cosmetics Affect the Matching Accuracy of Face Recognition Systems?," Proc. of 5th IEEE International Conference on Biometrics: Theory, Applications and Systems (BTAS), (Washington DC, USA), September 2012.
