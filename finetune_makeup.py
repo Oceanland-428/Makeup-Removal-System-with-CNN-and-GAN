@@ -26,6 +26,8 @@ makeup_with_labels/
       ..... .jpg
       ..... .jpg
       [...]
+
+Author: Mingchen Li
 """
 
 import argparse
