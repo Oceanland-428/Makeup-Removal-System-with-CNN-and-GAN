@@ -1,50 +1,31 @@
 """
-Example TensorFlow script for finetuning a VGG model on your own data.
-Uses tf.contrib.data module which is in release v1.2
-Based on PyTorch example from Justin Johnson
-(https://gist.github.com/jcjohnson/6e41e8512c17eae5da50aebef3378a4c)
-Required packages: tensorflow (v1.2)
-Download the weights trained on ImageNet for VGG:
-```
-wget http://download.tensorflow.org/models/vgg_16_2016_08_28.tar.gz
-tar -xvf vgg_16_2016_08_28.tar.gz
-rm vgg_16_2016_08_28.tar.gz
-```
-For this example we will use a tiny dataset of images from the COCO dataset.
-We have chosen eight types of animals (bear, bird, cat, dog, giraffe, horse,
-sheep, and zebra); for each of these categories we have selected 100 training
-images and 25 validation images from the COCO dataset. You can download and
-unpack the data (176 MB) by running:
-```
-wget cs231n.stanford.edu/coco-animals.zip
-unzip coco-animals.zip
-rm coco-animals.zip
-```
-The training data is stored on disk; each category has its own folder on disk
-and the images for that category are stored as .jpg files in the category folder.
-In other words, the directory structure looks something like this:
-coco-animals/
+This code is adopted from https://gist.github.com/omoindrot/dedc857cdc0e680dfb1be99762990c9c/
+                          Example TensorFlow script for fine-tuning a VGG model (uses tf.contrib.data)
+The priginal code is modified to suit in this project. The original code can be referred either from the website above, or
+the file named finetune_coco.py.
+
+The dataset used here are: FAM, MIFS, MIW, YMU, VMU
+
+The directory is as the following:
+makeup_with_labels/
   train/
-    bear/
-      COCO_train2014_000000005785.jpg
-      COCO_train2014_000000015870.jpg
+    1/
+      ..... .jpg
+      ..... .jpg
       [...]
-    bird/
-    cat/
-    dog/
-    giraffe/
-    horse/
-    sheep/
-    zebra/
+    0/
+      ..... .jpg
+      ..... .jpg
+      [...]
   val/
-    bear/
-    bird/
-    cat/
-    dog/
-    giraffe/
-    horse/
-    sheep/
-    zebra/
+    1/
+      ..... .jpg
+      ..... .jpg
+      [...]
+    0/
+      ..... .jpg
+      ..... .jpg
+      [...]
 """
 
 import argparse
