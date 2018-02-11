@@ -2,7 +2,7 @@
 This code is adopted from https://gist.github.com/omoindrot/dedc857cdc0e680dfb1be99762990c9c/
                           Example TensorFlow script for fine-tuning a VGG model (uses tf.contrib.data)
 The priginal code is modified to suit in this project. The original code can be referred either from the website above, or
-the file named finetune_coco.py.
+the file named finetune_original_from_omoindrot.py.
 
 The dataset used here are: FAM, MIFS, MIW, YMU, VMU
 
