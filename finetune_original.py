@@ -56,9 +56,9 @@ import tensorflow.contrib.slim.nets
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--train_dir', default='/Users/oceanland/Downloads/E/Stanford/1.2/CS230/project/coco-animals/train')
-parser.add_argument('--val_dir', default='/Users/oceanland/Downloads/E/Stanford/1.2/CS230/project/coco-animals/val')
-parser.add_argument('--model_path', default='/Users/oceanland/Downloads/E/Stanford/1.2/CS230/project/vgg_16.ckpt', type=str)
+parser.add_argument('--train_dir', default='coco-animals/train')
+parser.add_argument('--val_dir', default='coco-animals/val')
+parser.add_argument('--model_path', default='vgg_16.ckpt', type=str)
 parser.add_argument('--batch_size', default=32, type=int)
 parser.add_argument('--num_workers', default=4, type=int)
 parser.add_argument('--num_epochs1', default=10, type=int)
@@ -81,7 +81,6 @@ def list_images(directory):
 
     files_and_labels = []
     for label in labels:
-    	print label
         for f in os.listdir(os.path.join(directory, label)):
             files_and_labels.append((os.path.join(directory, label, f), label))
 
