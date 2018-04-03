@@ -49,15 +49,35 @@ Finetune: http://gist.github.com/omoindrot/dedc857cdc0e680dfb1be99762990c9c/
 
 ### References:
 
-1. A. Dantcheva, C. Chen, A. Ross, "Can Facial Cosmetics Affect the Matching Accuracy of Face Recognition Systems?," Proc. of 5th IEEE International Conference on Biometrics: Theory, Applications and Systems (BTAS), (Washington DC, USA), September 2012.
+[1] Dantcheva, A., Chen, C., & Ross, A. (2012) Can Facial Cosmetics Affect the Matching Accuracy of Face
+Recognition Systems? 5th IEEE International Conference on Biometrics: Theory, Applications and Systems
 
-2. C. Chen, A. Dantcheva, A. Ross, "Automatic Facial Makeup Detection with Application in Face Recognition," Proc. of 6th IAPR International Conference on Biometrics (ICB), (Madrid, Spain), June 2013.
+[2] Wang, S., & Fu, Y. (2016). Face Behind Makeup. Association for the Advancement of Artificial Intelligence,
+pp. 58-64.
 
-3. C. Chen, A. Dantcheva, A. Ross, "An Ensemble of Patch-based Subspaces for Makeup-Robust Face Recognition," Information Fusion Journal, Vol. 32, pp. 80 - 92, November 2016.
+[3] Jun-Yan, Z., Richard, Z., Deepak, P., Trevor, D., Alexei, E., Oliver, W. & Eli, S. (2017) Toward Multimodal
+Image-to-Image Translation. Computer Vision and Pattern Recognition
 
-4. C. Chen, A. Dantcheva, T. Swearingen, A. Ross, "Spoofing Faces Using Makeup: An Investigative Study," Proc. of 3rd IEEE International Conference on Identity, Security and Behavior Analysis (ISBA), (New Delhi, India), February 2017.
+[4] Ishaan, G., Faruk, A., Martin, A., Vincent, D. & Aaron C. (2017) Improved Training of Wasserstein GANs.
+Learning
 
-5. Hu, J.; Ge, Y.; Lu, J.; and Feng, X. 2013. Makeup-robust face verification. In International Conference
-on Acoustics, Speech and Signal Processing, 2342–2346.
+[5] Yi, L., Lingxiao, S., Xiang, W., Ran, H. & Tieniu, T. (2017) Anti-Makeup: Learning A Bi-Level Adversarial
+Network for Makeup-Invariant Face Verification. Computer Vision and Pattern Recognition
 
-6. Zhu, Jun-Yan, Taesung Park, Phillip Isola, and Alexei A. Efros. "Unpaired image-to-image translation using cycle-consistent adversarial networks." arXiv preprint arXiv:1703.10593 (2017).
+[6] Jun-Yan, Z., Taesung, P., Phillip, I. & Alexei, E. (2018). Unpaired Image-to-Image Translation using
+Cycle-Consistent Adversarial Networks. Computer Vision and Pattern Recognition
+
+[7] Chen, C., Dantcheva, A., & Ross, A. (2013) Automatic Facial Makeup Detection with Application in Face
+Recognition. 6th IAPR International Conference on Biometrics
+
+[8] Chen, C., Dantcheva, A., & Ross, A. (2016) An Ensemble of Patch-based Subspaces for Makeup-Robust
+Face Recognition. Information Fusion Journal, Vol.32, pp. 80-92
+
+[9] Chen, C., Dantcheva, A., Swearingen, T., & A. Ross, (2017) Spoofing Faces Using Makeup: An Investigative
+Study. 3rd IEEE International Conference on Identity, Security and Behavior Analysis
+
+[10] J. Long, E. Shelhamer, and T. Darrell. Fully convolutional networks forsemantic segmentation. In CVPR,
+pages 3431-3440, 2015. 2, 3, 6
+
+[11] P. Isola, J.-Y. Zhu, T. Zhou, and A. A. Efros. Image-to-image translation with conditional adversarial
+networks. In CVPR, 2017. 2, 3, 5, 7, 20
