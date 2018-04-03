@@ -1,5 +1,18 @@
 # Makeup Removal System with CNN and GAN
 
+
+
+
+## Updated Version
+To run the code, download the dataset labeled "gan_makeup_data_96", and the WGAN-GP folder. Open a terminal and cd to "src/model". Type the command:
+	
+python main.py --run train --use_XLA
+
+Be careful about the dataset direction in the train_wgan_GP.py.
+
+
+## Proposal Version
+
 This project is a makeup removal deep learning system. There are several application areas of such a system. For example, a front door face authentication camera should be able to recognize the users regardless the level of the makeup. In addition, the system is useful for social network apps since facial cosmetics can sometimes be deceivable.
 
 Dataset of this project consists of total 2600 images of 1300 different people from five separate datasets (FAM, MIFS, VMU, MIW, YMU). Each person has two images: one with makeup and the other one without. 
