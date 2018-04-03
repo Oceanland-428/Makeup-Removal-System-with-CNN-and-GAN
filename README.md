@@ -22,7 +22,7 @@ The generated images are different with the ground truth image in poses and faci
 because the pair of photos of a same person in the dataset were taken in different poses and facial
 expressions.
 
-| [![VideoBlocks](https://github.com/Oceanland-428/Makeup-Removal-System-with-CNN-and-GAN/blob/master/noisy_results.png)](http://videoblocks.com)  | [![AudioBlocks](https://github.com/Oceanland-428/Makeup-Removal-System-with-CNN-and-GAN/blob/master/removal_results.png)](http://audioblocks.com) |
+| [![](https://github.com/Oceanland-428/Makeup-Removal-System-with-CNN-and-GAN/blob/master/noisy_results.png)](http://videoblocks.com)  | [![](https://github.com/Oceanland-428/Makeup-Removal-System-with-CNN-and-GAN/blob/master/removal_results.png)](http://audioblocks.com) |
 |:---:|:---:|
 | Figure 1(a) | Figure 1(b) |
 
