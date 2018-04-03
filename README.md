@@ -10,6 +10,22 @@ python main.py --run train --use_XLA
 
 Be careful about the dataset direction in the train_wgan_GP.py.
 
+### Results
+Before actually inputting images to the GAN, we first tried to use random noises as inputs to test the
+capability of the GAN. One of the results of noisy input is showing in Figure 1(a), with the input to
+the generator as random noise and the input to the discriminator as without-makeup images.
+
+The results of the system are showing in Figure 1(b). The first row contains the with-makeup images
+that were input into the generator. The second row shows the makeup-removed images generated from
+the generator. The final row contains the ground truth images of the same people without makeup.
+The generated images are different with the ground truth image in poses and facial expressions,
+because the pair of photos of a same person in the dataset were taken in different poses and facial
+expressions.
+
+| [![VideoBlocks](https://d1ow200m9i3wyh.cloudfront.net/img/assets/videoblocks/images/logo.png)] | [![AudioBlocks](https://dtyn3c8zjrx01.cloudfront.net/img/assets/audioblocks/images/logo.png)] |
+|:---:|:---:|
+| Figure 1(a) | Figure 1(b) |
+
 
 ## Proposal Version
 
@@ -17,7 +33,7 @@ This project is a makeup removal deep learning system. There are several applica
 
 Dataset of this project consists of total 2600 images of 1300 different people from five separate datasets (FAM, MIFS, VMU, MIW, YMU). Each person has two images: one with makeup and the other one without. 
 
-The system contains three pretrained neural networks and one self-build neural network, as illustrated in Figure 1. Before building our own network, we need to find three pretrained networks, A, B and C (B is a free gift if we have A and C, so actually we only need to have two pretrained networks). A is used to detect whether a person is with or without makeup. B is used to detect whether an image is a valid person’s photo. C is a face recognition network, which provides encodings of the input face image. The network on the bottom of Figure 1 is a self-build network. The input is a person’s photo with makeup. The network then modifies the photo and outputs a candidate image. This image then goes through the three pretrained networks. If the output of A and B is without makeup and valid, respectively, and the encodings from C are similar to the encodings of the original person’s photo, then the candidate image is output from the network. If any of the above condition is not satisfied, the image will return to the network and go through the process again.
+The system contains three pretrained neural networks and one self-build neural network, as illustrated in Figure 2. Before building our own network, we need to find three pretrained networks, A, B and C (B is a free gift if we have A and C, so actually we only need to have two pretrained networks). A is used to detect whether a person is with or without makeup. B is used to detect whether an image is a valid person’s photo. C is a face recognition network, which provides encodings of the input face image. The network on the bottom of Figure 1 is a self-build network. The input is a person’s photo with makeup. The network then modifies the photo and outputs a candidate image. This image then goes through the three pretrained networks. If the output of A and B is without makeup and valid, respectively, and the encodings from C are similar to the encodings of the original person’s photo, then the candidate image is output from the network. If any of the above condition is not satisfied, the image will return to the network and go through the process again.
 
 One or more pretrained networks will be derivations of VGG16, with some modification on the last few fully connected layers of CNN using our training examples. There are similar but different implementations existing in Github: CycleGan, Pix2Pix.
 
@@ -25,7 +41,7 @@ One or more pretrained networks will be derivations of VGG16, with some modifica
   <img width="766" height="466" src="https://github.com/Oceanland-428/Makeup-Removal-System-with-CNN-and-GAN/blob/master/System_Arch.png">
 </p>
 <p align="center">
-  Figure 1
+  Figure 2
 </p>
 
 #
