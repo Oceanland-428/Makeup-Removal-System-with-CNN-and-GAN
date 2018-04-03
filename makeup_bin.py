@@ -1,7 +1,12 @@
+'''
 
+<<<<<<< HEAD
+'''
+=======
 # coding: utf-8
 
-# In[47]:
+# In[1]:
+>>>>>>> origin/master
 
 
 import tensorflow as tf
@@ -17,14 +22,76 @@ from tensorflow.python.framework import ops
 np.random.seed(1)
 
 
-# In[48]:
+<<<<<<< HEAD
+# file path
+train_no_dir = 'makeup_with_labels/train/no_makeup/'
+train_yes_dir = 'makeup_with_labels/train/yes_makeup/'
+val_no_dir = 'makeup_with_labels/val/no_makeup/'
+val_yes_dir = 'makeup_with_labels/val/yes_makeup/'
+
+# open file
+def openFiles(train_no_dir, train_yes_dir, val_no_dir, val_yes_dir):
+    train_X, train_Y = create_datasets(train_no_dir, train_yes_dir, True)
+    val_X, val_Y = create_datasets(val_no_dir, val_yes_dir)
+    return train_X, train_Y, val_X, val_Y
+
+
+def create_datasets(no_dir, yes_dir, train = False):
+    no_files = glob.glob(no_dir + '*.jpg')
+    no_filelist = []
+    X = []
+    Y = []
+    X_to_no_file = {}
+    X_to_yes_file = {}
+    for file in no_files:
+        img = Image.open(file)
+        arr = np.array(img)
+        no_filelist.append(arr)
+        if train == True:
+            img_flip = np.fliplr(img)
+            arr_flip = np.array(img_flip)
+            no_filelist.append(arr_flip)
+    count_no = 0
+    for i in range(len(no_filelist)):
+        img = no_filelist[i]
+        if len(img.shape) == 3 and img.shape[0] == 128 and img.shape[1] == 128 and img.shape[2] == 3:
+            X.append(np.array(img))
+            Y.append(np.array([0, 1]))
+            X_to_no_file[count_no] = i
+            count_no += 1
+    yes_files = glob.glob(yes_dir + '*.jpg')
+    yes_filelist = []
+    for file in yes_files:
+        img = Image.open(file)
+        arr = np.array(img)
+        yes_filelist.append(arr)
+        if train == True:
+            img_flip = np.fliplr(img)
+            arr_flip = np.array(img_flip)
+            yes_filelist.append(arr_flip)
+    count_yes = 0
+    for i in range(len(yes_filelist)):
+        img = yes_filelist[i]
+        if len(img.shape) == 3 and img.shape[0] == 128 and img.shape[1] == 128 and img.shape[2] == 3:
+            X.append(np.array(img))
+            Y.append(np.array([1, 0]))
+            X_to_yes_file[count_yes] = i
+            count_yes += 1
+    X = np.array(X)
+    Y = np.array(Y)
+    return X, Y
+
+
+# In[33]:
+=======
+# In[2]:
 
 
 no_dir = 'makeup_with_labels/no_makeup/'
 yes_dir = 'makeup_with_labels/yes_makeup/'
 
 
-# In[49]:
+# In[3]:
 
 
 def create_datasets(no_dir, yes_dir):
@@ -79,7 +146,8 @@ def create_datasets(no_dir, yes_dir):
 	return train_X, train_Y, val_X, val_Y
 
 
-# In[50]:
+# In[4]:
+>>>>>>> origin/master
 
 
 def create_placeholders(n_H0, n_W0, n_C0, n_y):
@@ -88,7 +156,7 @@ def create_placeholders(n_H0, n_W0, n_C0, n_y):
 	return X, Y
 
 
-# In[51]:
+# In[5]:
 
 
 def initialize_parameters():
@@ -103,7 +171,7 @@ def initialize_parameters():
     return parameters
 
 
-# In[52]:
+# In[20]:
 
 
 def forward_propagation(X, parameters):
@@ -139,7 +207,7 @@ def forward_propagation(X, parameters):
     return Z5
 
 
-# In[53]:
+# In[21]:
 
 
 def compute_cost(Z, Y, parameters, lambd, regu = False):
@@ -147,7 +215,7 @@ def compute_cost(Z, Y, parameters, lambd, regu = False):
         print "L2 regu"
         # add regularization
         cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits = Z, labels = Y))
-        regularizer = tf.nn.l2_loss(parameters["W1"]) + tf.nn.l2_loss(parameters["W2"]) + tf.nn.l2_loss(parameters["W3"]) + tf.nn.l2_loss(parameters["W4"])
+        regularizer = tf.nn.l2_loss(parameters["W1"]) + tf.nn.l2_loss(parameters["W2"])
         cost = tf.reduce_mean(cost + lambd * regularizer)
         return cost
     else:
@@ -156,7 +224,7 @@ def compute_cost(Z, Y, parameters, lambd, regu = False):
         return cost
 
 
-# In[54]:
+# In[22]:
 
 
 def model(train_X, train_Y, val_X, val_Y, learning_rate, num_epochs, lambd, regu, print_cost = True):
@@ -222,27 +290,27 @@ def model(train_X, train_Y, val_X, val_Y, learning_rate, num_epochs, lambd, regu
         return train_accuracy, test_accuracy, parameters
 
 
-# In[55]:
+# In[26]:
 
 
 def main():
     train_X, train_Y, val_X, val_Y = create_datasets(no_dir, yes_dir)
-    print train_X.shape # (1670, 128, 128, 3)
-    print train_Y.shape # (1670, 2)
-    print val_X.shape   # (200, 128, 128, 3)
-    print val_Y.shape   # (200, 2)
-    n_epoch = 1000
-    lambd_list = [1e5, 1e4, 1e3, 1e2, 1e1, 1]
+    print train_X.shape # (3961, 128, 128, 3)
+    print train_Y.shape # (3961, 2)
+    print val_X.shape   # (991, 128, 128, 3)
+    print val_Y.shape   # (991, 2)
+    n_epoch = 500
+    lambd_list = [0.8, 0.6, 0.4, 0.2, 0.1]
     regu = True
     learning_rate_dict = {}
     for i in range(1):
         r = np.random.rand()
         r = - r - 2
         learning_rate = 10 ** r
-        learning_rate = 0.003
+        learning_rate = 0.005
         #print "learning_rate", learning_rate
         for lambd in lambd_list:
-            train_accuracy, test_accuracy, parameters = model(train_X, train_Y, val_X, val_Y, learning_rate, n_epoch, 1, regu)
+            train_accuracy, test_accuracy, parameters = model(train_X, train_Y, val_X, val_Y, learning_rate, n_epoch, lambd, regu)
             learning_rate_dict[learning_rate] = (train_accuracy, test_accuracy, parameters)
     for lr in learning_rate_dict:
         print lr, learning_rate_dict[lr][0], learning_rate_dict[lr][1]
@@ -252,5 +320,5 @@ def main():
 
 
 if __name__ == '__main__':
-	main()
+    main()
 

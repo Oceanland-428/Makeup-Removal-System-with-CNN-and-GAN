@@ -1,33 +1,50 @@
 """
-This code is adopted from https://gist.github.com/omoindrot/dedc857cdc0e680dfb1be99762990c9c/
-                          Example TensorFlow script for fine-tuning a VGG model (uses tf.contrib.data)
-The priginal code is modified to suit in this project. The original code can be referred either from the website above, or
-the file named finetune_original_from_omoindrot.py.
-
-The dataset used here are: FAM, MIFS, MIW, YMU, VMU
-
-The directory is as the following:
-makeup_with_labels/
+Example TensorFlow script for finetuning a VGG model on your own data.
+Uses tf.contrib.data module which is in release v1.2
+Based on PyTorch example from Justin Johnson
+(https://gist.github.com/jcjohnson/6e41e8512c17eae5da50aebef3378a4c)
+Required packages: tensorflow (v1.2)
+Download the weights trained on ImageNet for VGG:
+```
+wget http://download.tensorflow.org/models/vgg_16_2016_08_28.tar.gz
+tar -xvf vgg_16_2016_08_28.tar.gz
+rm vgg_16_2016_08_28.tar.gz
+```
+For this example we will use a tiny dataset of images from the COCO dataset.
+We have chosen eight types of animals (bear, bird, cat, dog, giraffe, horse,
+sheep, and zebra); for each of these categories we have selected 100 training
+images and 25 validation images from the COCO dataset. You can download and
+unpack the data (176 MB) by running:
+```
+wget cs231n.stanford.edu/coco-animals.zip
+unzip coco-animals.zip
+rm coco-animals.zip
+```
+The training data is stored on disk; each category has its own folder on disk
+and the images for that category are stored as .jpg files in the category folder.
+In other words, the directory structure looks something like this:
+coco-animals/
   train/
-    1/
-      ..... .jpg
-      ..... .jpg
+    bear/
+      COCO_train2014_000000005785.jpg
+      COCO_train2014_000000015870.jpg
       [...]
-    0/
-      ..... .jpg
-      ..... .jpg
-      [...]
+    bird/
+    cat/
+    dog/
+    giraffe/
+    horse/
+    sheep/
+    zebra/
   val/
-    1/
-      ..... .jpg
-      ..... .jpg
-      [...]
-    0/
-      ..... .jpg
-      ..... .jpg
-      [...]
-
-Author: Mingchen Li
+    bear/
+    bird/
+    cat/
+    dog/
+    giraffe/
+    horse/
+    sheep/
+    zebra/
 """
 
 import argparse
@@ -102,9 +119,8 @@ def check_accuracy(sess, correct_prediction, is_training, dataset_init_op):
     # Return the fraction of datapoints that were correctly classified
     acc = float(num_correct) / num_samples
     return acc
-
-
-def main(args):
+  
+  def main(args):
     # Get the list of filenames and corresponding list of labels for training et validation
     args = args[0]
     # args = [args, [... .json]] --> need args[0]
@@ -255,12 +271,16 @@ def main(args):
             # `get_variables` will only return the variables whose name starts with the given pattern
             fc8_variables = tf.contrib.framework.get_variables('vgg_16/fc8')
             fc8_init = tf.variables_initializer(fc8_variables)
+            print 'fc8_variables', fc8_variables
+            print 'fc8_init', fc8_init
 
             # ---------------------------------------------------------------------
             # Using tf.losses, any loss is added to the tf.GraphKeys.LOSSES collection
             # We can then call the total loss easily
             tf.losses.sparse_softmax_cross_entropy(labels=labels, logits=logits)
-            # tf.losses.sigmoid_cross_entropy(labels=labels, logits=logits)
+            #tf.losses.sigmoid_cross_entropy(labels, logits=logits)
+            #print labels.shape, logits.shape
+            #tf.nn.sigmoid_cross_entropy_with_logits(labels=labels, logits=logits)
             loss = tf.losses.get_total_loss()
 
             # First we want to train only the reinitialized last layer fc8 for a few epochs.
